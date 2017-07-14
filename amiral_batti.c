@@ -37,7 +37,6 @@ int main() {
 	{'0','0','0','0','0','0'},{'0','0','0','0','0','0'},
 	{'0','0','0','0','0','0'},{'0','0','0','0','0','0'},
 	{'0','0','0','0','0','0'}};
-	
 	int satir,sutun;
 	int dogru = 0;
 	int yanlis = 0;
@@ -68,10 +67,11 @@ int main() {
 		printf("Sutun giriniz:");
 		scanf("%d",&sutun);
 		
+		
 		if(satir >=0 && satir <= 5 && sutun >= 0 && sutun <= 5) {
 		
 		
-		if(satir == 0 && sutun == 0 || satir == 3 && sutun == 2 || // Gemilerimin koordinatlarıyla kullanıcının koordinatlarını karşılaştırdık
+		if(satir == 0 && sutun == 0 || satir == 3 && sutun == 2 ||		// Gemilerimin koordinatlarıyla kullanıcının koordinatlarını karşılaştırdık
 		satir == 1 && sutun == 2 || satir == 3 && sutun == 3 || 
 		satir == 0 && sutun == 3 || satir == 3 && sutun == 4 ||
 		satir == 1 && sutun == 5 || satir == 5 && sutun == 0 ||
@@ -80,20 +80,42 @@ int main() {
 		satir == 2 && sutun == 5 || satir == 5 && sutun == 4 ||
 		satir == 3 && sutun == 1 || satir == 5 && sutun == 5) {
 			
+			if(oyuntahtasi[satir][sutun] == '*') { // Kullanıcının bu noktayı daha önceden girip girmediğini tespit ettik
+				
+				printf("Burayi daha onceden denemissiniz\n");
+				a -=1; //Yukarıdaki hata verildiğinde işlem sayısının etkilenmemesi için a'dan 1 çıkarttık
+					
+			}
+			
+			else {
+			
 			printf("Buummmm!\n");
 			oyuntahtasi[satir][sutun] = '*'; // Kullanıcının doğru bildiği koordinatlara '*' sembolünü yerleştirdik
 			dogru +=1; // Oyun sonunda kazananı belirlemek için dogru değişkenini 1 arttırdık
+			
+			}
 			
 		}
 		
 		
 		else {
 			
+			if(oyuntahtasi[satir][sutun] == 'X') { // Kullanıcının bu noktayı daha önceden girip girmediğini tespit ettik
+				
+				printf("Burayi daha onceden denemissiniz\n");
+				a-=1; //Yukarıdaki hata verildiğinde işlem sayısının etkilenmemesi için a'dan 1 çıkarttık
+				
+			}
+			
+			else {
+			
 			
 			printf("Bilemedin :(\n");
 			oyuntahtasi[satir][sutun] = 'X'; // Kullanıcının yanlış bildiği koordinatlara 'X' sembolünü yerleştirdik
 			yanlis +=1;
 			
+			
+			}
 			
 		}
 		
@@ -149,11 +171,6 @@ int main() {
 	
 	
 		
-	
-	
-	
-	
-	
 	
 	
 	
